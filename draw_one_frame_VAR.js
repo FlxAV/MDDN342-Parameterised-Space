@@ -13,3 +13,7 @@ let drawnCols = 0; // Track the number of columns drawn
 
 var isFinish = false;
 var start = false;
+
+
+let circles = []; // Array to store information about the expanding circles
+let color_switch = false;
