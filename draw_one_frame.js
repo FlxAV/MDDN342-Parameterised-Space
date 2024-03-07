@@ -16,7 +16,7 @@ function draw_one_frame(cur_frac) {
     let direction = 1; // 1 for moving right, -1 for moving left
 
     //Draw the grid, switch grid to true.
-    let grid = true;
+    let grid = false;
     if(grid){
         for (let col = 0; col < numCols; col++) {
             for (let row = 0; row < numRows; row++) {
@@ -41,17 +41,12 @@ function draw_one_frame(cur_frac) {
                 let y = startY + (row - numRows / 2) * cellHeight;
                 let current_position = { x, y };
                 
-                // Check if the current position is not already in the trail array
-                let positionExists = false;
-                for (let i = 0; i < trail.length; i++) {
-                    if (trail[i].x === current_position.x && trail[i].y === current_position.y) {
-                        positionExists = true;
-                        break;
-                    }
-                }
+                
+
+                
 
                 // If the position doesn't exist in the trail array, push it
-                if (!positionExists && row == numRows/2) {
+                if (!isInTrail(current_position) && row == numRows/2) {
                     trail.push(current_position);
                 }
             }
@@ -152,4 +147,13 @@ function resetVars(){
     isFinish = false;
     start = false;
 
+}
+
+function isInTrail(position) {
+    for (let i = 0; i < trail.length; i++) {
+        if (trail[i].x === position.x && trail[i].y === position.y) {
+            return true;
+        }
+    }
+    return false;
 }
