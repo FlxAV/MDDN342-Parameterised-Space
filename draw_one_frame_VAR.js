@@ -23,3 +23,7 @@ let back_color_switch = false;
 
 let stars = []; // Array to hold the exploding stars
 let animationFinished = false; // Flag to track whether the animation is finished
+
+
+let initialPositions = [];
+let initialDiameters = [];

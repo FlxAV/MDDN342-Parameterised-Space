@@ -16,10 +16,19 @@ In terms of color, I'm not set one style in particular. Maybe lots of colors wit
 ![Reference!](MDDN342_pipes02.jpg)
  
 
-**************PART 2**************
+**************PART 2*****************
 
 So I got to a point where I had a grid on my canvas and was able to generate a line that travels across my screen and then the "tail" would travel off the screen making it appear as though the line was travelling accross the canvas like a snake.
 
 However, I have realised that with the 24 frame time frame I dont believe I would be able to make a snake crawl around the screen in a random path and then remove itself from the screen within the timeframe in a way that looks good.
 
 Therefoore I am now looking into doing something ideally somewhat related to my idea or maybe go completely in a different direction.
+
+
+***************PART 3******************
+
+Now since I was kinda restarting, I was kind of just trying new things. I created a Class for circles that could be set in a location with a specific radius, so I could make them individually grow at certain paces etc... 
+
+Then I created a "Star" class where it creates a bunch of lines from a specific point and expand from that point to the outside, kind of like an explosion. I then made it so that a bunch would appear in random spots, and then clear the canvas with a circle.
+
+After that I moved onto creating a new draw_one_frame file so that I could keep the "Stars" one and work on something else. I know generate a grid of circles across the canvas, then the circles expand using a Noise function until it covers teh whole screen to complete the loop.
