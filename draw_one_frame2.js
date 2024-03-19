@@ -32,6 +32,13 @@ function draw_one_frame(cur_frac) {
         console.log("drawing");
     }
 
+     // Remove circles that are fully expanded
+     for (let i = circles.length - 1; i >= 0; i--) {
+        if (circles[i].isFullyExpanded()) {
+            circles.splice(i, 1);
+        }
+    }
+
 }
 
 
