@@ -27,3 +27,10 @@ let animationFinished = false; // Flag to track whether the animation is finishe
 
 let initialPositions = [];
 let initialDiameters = [];
+
+let switch_02 = false;
+let showBlankCanvas = true;
+let maxExpansionFrame = 23;
+let backColor = 255;
+
+let test = 0;
