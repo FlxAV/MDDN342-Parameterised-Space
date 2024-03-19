@@ -33,9 +33,9 @@ function draw_one_frame(cur_frac) {
     }
 
      // Remove circles that are fully expanded
-     for (let i = circles.length - 1; i >= 0; i--) {
-        if (circles[i].isFullyExpanded()) {
-            circles.splice(i, 1);
+     for (let i = circles_2.length - 1; i >= 0; i--) {
+        if (circles_2[i].isFullyExpanded()) {
+            circles_2.splice(i, 1);
         }
     }
 
