@@ -1,64 +1,62 @@
 function draw_one_frame(cur_frac) {
 
-    if(switch_02){
-        fill(0);
-    }else{
-        fill(255); // White background
-    }
+    console.log("runing");
     fill(255);
     rect(0, 0, width, height);
    
     
-    let num_cols = 18;
-    let num_rows = 8;
+    let num_cols = 9;  //18
+    let num_rows = 4;  //8
 
-    // Adjust cur_frac to ensure seamless looping
-    cur_frac = (cur_frac + 0.005) % 1; // Adjust the offset as needed
+    let circleWidth = width / num_cols;
+    let circleHeight = height / num_rows;
 
-    
-
-    
-    // Generate Perlin noise values for each circle
-    
-
-    noiseSeed(210); // Set a consistent noise seed for reproducibility
-     
-    let noiseScale = 0.4;
-    let noiseValues = [];
     for (let i = 0; i < num_cols; i++) {
-        noiseValues[i] = [];
         for (let j = 0; j < num_rows; j++) {
-            noiseValues[i][j] = noise(i * noiseScale, j * noiseScale, cur_frac);
+            let x = (i + 0.5) * circleWidth;
+            let y = (j + 0.5) * circleHeight;
+            let expansionRate = map(noise(x * 0.01, y * 0.01), 0, 1, 1, 5); // Adjust the noise scale as needed
+            circles_2.push(new Circle(x, y, expansionRate));
+            console.log("pushing");
         }
     }
 
-    // Draw circles with smoothly oscillating sizes
+    console.log("array LENGTH: ",circles.length);
+
+     // Expand and draw circles
     noStroke();
-    for (let i = 0; i < num_cols; i++) {
-        for (let j = 0; j < num_rows; j++) {
-            let x = (i + 0) * (width / (num_cols -1));
-            let y = (j + 0) * (height / (num_rows -1));
-
-            let value_a = 1.5;
-            let value_b = 2.2;
-
-            // Smoothly oscillate the size based on noise
-            let diameter = map(sin(TWO_PI * cur_frac + noiseValues[i][j] * TWO_PI), -1, 1, 10, min(width * value_a / (num_cols + 1), height * value_b / (num_rows + 1)) * 4);
-            
-            if(switch_02){
-                fill(0);
-            }else{
-                fill(255); // Black color
-            }
-            fill(0);
-            ellipse(x, y, diameter);
-        }
+    fill(0);
+    for (let i = 0; i < circles_2.length; i++) {
+        circles_2[i].expand();
+        circles_2[i].draw();
+        console.log("drawing");
     }
 
+}
 
-    if(cur_frac > 0.95){
-        switch_02 = !switch_02;
+
+// Define a Circle class
+class Circle {
+    constructor(x, y, expansionRate) {
+        this.x = x;
+        this.y = y;
+        this.expansionRate = expansionRate;
+        this.diameter = 0;
     }
 
+    // Function to expand the circle
+    expand() {
+        this.diameter += this.expansionRate;
+    }
 
+    // Function to check if the circle is fully expanded
+    isFullyExpanded() {
+        return this.diameter >= max(width, height);
+    }
+
+    // Function to draw the circle
+    draw() {
+        fill(0);
+        ellipse(this.x, this.y, this.diameter);
+    }
 }

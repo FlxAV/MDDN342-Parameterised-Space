@@ -33,4 +33,8 @@ let showBlankCanvas = true;
 let maxExpansionFrame = 23;
 let backColor = 255;
 
+//*************drawOneFrame 2 ****************** */
+
 let test = 0;
+
+let circles_2 = [];
