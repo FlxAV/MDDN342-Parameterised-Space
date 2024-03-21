@@ -2,39 +2,49 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14049575&assignment_repo_type=AssignmentRepo)
 ### 2024 MDDN342 Project 1: Parameterised Space
 
-**************PART 1**************
 
+Bubbling Up
+Felix Vidal
 
-This design is inspired by the game snake. I want the scene to start empty and then slowly fill up with lines (snakes) going around the space and filling it up.
+Design Intentions
+Initially inspired by the classic game Snake, the project aimed to create an interactive scene where the screen gradually fills with lines (resembling snakes) moving around the space. However, the design intentions evolved over time, leading to the concept of bubbles appearing on the screen and gradually popping.
 
-In terms of concrete performance, I'd like to have different depths, so some lines are "closer" to the screen and others are more pushed back in the background, so varying shapes as well. If possible I may look into making the animation appear 3D so the snake is coming towards the screen and vice versa.
-
-An inspiration that has been brought to my attention is the 3D pipes screensaver, which looks similar to what I had in mind.
-
-In terms of color, I'm not set one style in particular. Maybe lots of colors with big contrast or just plain colors with a gradient from dark to light.
+External Influences and Inspirations
+3D Pipes Screensaver: The visual style of the project drew inspiration from the classic 3D pipes screensaver, particularly in terms of the dynamic movement and depth perception.
 
 ![Reference!](MDDN342_pipes02.jpg)
- 
 
-**************PART 2*****************
+ However when that plan fell through I looked into other design ideas. One that I enjoyed was was the expanding black circles which I will mention in my journal. Some inspiration came from this scene in "The Incredibles".
 
-So I got to a point where I had a grid on my canvas and was able to generate a line that travels across my screen and then the "tail" would travel off the screen making it appear as though the line was travelling accross the canvas like a snake.
+![Reference!]( MDDN342_incrediblesBlackOrbs.jpg)
 
-However, I have realised that with the 24 frame time frame I dont believe I would be able to make a snake crawl around the screen in a random path and then remove itself from the screen within the timeframe in a way that looks good.
+Those black orbs then inspired me into a slightly different direction. The idea was bubbles.
 
-Therefoore I am now looking into doing something ideally somewhat related to my idea or maybe go completely in a different direction.
-
-
-***************PART 3******************
-
-Now since I was kinda restarting, I was kind of just trying new things. I created a Class for circles that could be set in a location with a specific radius, so I could make them individually grow at certain paces etc... 
-
-Then I created a "Star" class where it creates a bunch of lines from a specific point and expand from that point to the outside, kind of like an explosion. I then made it so that a bunch would appear in random spots, and then clear the canvas with a circle.
-The animation was a bunch of spots on the canvas were randomly slected with a check to make sure two spots weren't too close to each other. Then the "explosion" animation would begin from each point (around 6 points). Each point was a random color, once the explosions had reach the borders of the canvas, a cricle would be drawn from the center of the canvas, expanding and erasing everything, completing the loop.  I found that all of that happening in one second was just too much and chaotic so I wasn't too thrilled.
-
-After that I moved onto creating a new draw_one_frame file so that I could keep the "Stars" one and work on something else. I know generate a grid of circles across the canvas. I then assign noise values to each point and thecircles expand using such Noise function until it covers teh whole screen. The circles then diminish and then repeat. The loop completes when the screen is completely covered.
+![Reference!]( MDDN342_bubbles.jpg)
 
 
-****** PART 4 *************************
+Include reference images here
 
-So i removed the switching of colors that happen. Now I have a black bakcground and the circles are white. The circles still expand each at a randomised rate. I added a rainbow ring around each circle (chromatic abberation) so that each circle kind of looks lika a bubble. I then made it so that the circles get removed based off of hwo far along in the animation we are to make it look like they are popping. I then modified the circle generation so that have a random location instead of a grid.
+Design Journal
+Part 1: Exploration and Inspiration
+At the begining of project the concept was of a snake-like animation gradually filling the screen. Drawing inspiration from classic games and screensavers, particularly the 3D pipes screensaver, I aimed to create a visually engaging experience with dynamic movement and depth perception.
+
+Part 2: Iteration and Realization
+Initial attempts involved creating a grid on the canvas and generating a line that traversed the screen, simulating a snake-like motion. However, limitations in the timeframe led to a reassessment of the approach. Recognizing the constraints, I pivoted towards exploring alternative concepts while still maintaining the essence of dynamic animation.
+
+Part 3: Experimentation and Refinement
+Exploring new avenues, I experimented with different visual elements, including circles expanding from a central point resembling an explosion. While visually interesting, the complexity of the animation led to a chaotic experience. Iterating further, I developed a grid of circles across the canvas, utilizing noise functions to control their expansion and contraction. This iterative process allowed for refinement and optimization of the visual effects.
+
+Part 4: Evolution and Finalization
+Refining the design, I simplified the color scheme to black background with white circles, reminiscent of bubbles. Implementing a rainbow ring around each circle added a touch of chromatic aberration, enhancing the bubble-like appearance. Further modifications were made to simulate the popping of bubbles based on the progression of the animation. The addition of randomization in circle placement added variation and visual interest to the scene, resultoinig in the design concept.
+
+Overall, the design process was marked by experimentation, iteration, and adaptation, ultimately resulting in the creation of a dynamic and visually captivating animation reminiscent of bubbles emerging and popping.
+
+
+
+
+References:
+
+Pipes: https://www.screensaversplanet.com/screensavers/3d-pipes-494/#google_vignette
+Incredibles: Bird, B. (2004). The Incredibles. Buena Vista Pictures.
+Bubbles: [Katia_d](https://www.freepik.com/author/katiad)

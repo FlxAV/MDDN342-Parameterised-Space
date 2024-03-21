@@ -1,173 +1,139 @@
-// function draw_one_frame(cur_frac) {
-//     // Background
-//     fill(255); // White background
-//     rect(0, 0, width, height);
-
-//     //console.log(cur_frac);
-
-
-// }
-
-
-
-
-//********************* STARS ******************************************** */
-
-// Function to add a new exploding star to the array
-function addStar() {
-    let minDistance = 100; // Minimum distance between stars
-
-    // Generate a new star with random position and color
-    let x = random(width); // Random x-coordinate for the star
-    let y = random(height); // Random y-coordinate for the star
-    let c = color(random(255), random(255), random(255)); // Random color for the star
-    let newStar = new ExplodingStar(x, y, c); // Create a new exploding star
-
-    // Check the distance between the new star and all existing stars
-    let tooClose = false;
-    for (let i = 0; i < stars.length; i++) {
-        let d = dist(newStar.x, newStar.y, stars[i].x, stars[i].y);
-        if (d < minDistance) {
-            tooClose = true;
-            break; // Stop checking if one star is too close
-        }
-    }
-
-    // Add the new star if it's not too close to any existing star
-    if (!tooClose) {
-        stars.push(newStar); // Add the star to the array
-    }
-}
-
-// Define the angle step for each line
-let angleStep = Math.PI / 6; // You can adjust this value to control the density of the lines
-let lineThickness = 30; // Initial line thickness
-let numExplosions = 6;
-let timeOfExplosion = 2;
-
-class ExplodingStar {
-    constructor(x, y, color) {
-        this.x = x; // X-coordinate of the star center
-        this.y = y; // Y-coordinate of the star center
-        this.color = color; // Color of the star
-    }
-
-    // Method to draw the exploding star
-    draw(cur_frac) {
-        for (let angle = 0; angle < TWO_PI; angle += angleStep) {
-            // Calculate the end point of each line
-            let x2 = this.x + cos(angle) * cur_frac * timeOfExplosion * width / 1;
-            let y2 = this.y + sin(angle) * cur_frac * timeOfExplosion * height / 1;
-
-            // Draw the line from the center to the calculated end point
-            strokeWeight(lineThickness); // Set the line thickness
-            stroke(this.color); // Set the stroke color
-            line(this.x, this.y, x2, y2);
-        }
-    }
-}
-
-//***************CIRCLES *************************************** */
-
-// Function to add a new circle to the array
-function addCircle() {
-    let c_color = 0;
-        if(color_switch){
-            c_color = 255;
-            color_switch = false;
-        }else{
-            c_color = 0;
-            color_switch = true;
-        }
-    let newCircle = new Circle(width / 2, height / 2, 0, c_color ); // Create a new circle at the center
-    circles.push(newCircle); // Add the circle to the array
-    }
-    
-    // Circle object definition
-    class Circle {
-    constructor(x, y, radius, color) {
-        this.x = x; // X-coordinate of the circle center
-        this.y = y; // Y-coordinate of the circle center
-        this.radius = radius; // Current radius of the circle
-        this.growing = true; // Flag to indicate if the circle is expanding or shrinking
-        this.color = color;
-    }
-    
-    // Update the properties of the circle
-    update(cur_frac) {
-        if (this.growing) {
-            this.radius += 50 ; // Increase the radius to make the circle expand
-            
-        }
-    
-        // Check if the circle has reached the maximum size
-        if (this.radius > Math.min(width, height)) {
-            this.growing = false; // Stop the circle from expanding
-        }
-    }
-    
-    // Draw the circle
-    display() {
-        fill(this.color); // Draw without fill
-        noStroke(); // Black stroke color
-        ellipse(this.x, this.y, this.radius * 2); // Draw the circle
-    }
-    }
-
-//******************************* MAIN ********************************* */
-
-let added = true;
-
 function draw_one_frame(cur_frac) {
-    
-    let back_color = 0;
-    if(color_switch){
-        back_color = 0;
-    }if(!color_switch ){
-        back_color = 255;
-    }
-    fill(back_color); // White background
-    rect(0, 0, width, height);
 
-    // Check if a new star needs to be added
-    if (stars.length < numExplosions) {
-        for(let i = 0; i<numExplosions; i++){
-            addStar(); // Add a new exploding star if conditions are met
+    if (!setupComplete) { // Run setup code only once
+        let num_cols = 9; // Adjust the number of columns as needed
+        let num_rows = 4; // Adjust the number of rows as needed
+        let noiseScale = 0.4; // Adjust the noise scale as needed
+
+        let circleWidth = width / num_cols;
+        let circleHeight = height / num_rows;
+
+        let maxExpansionRate = map(height, 540, 1200, 80, 240); // Maximum expansion rate
+        let minExpansionRate = map(height, 540, 1200, 1, 3);; // Minimum expansion rate
+
+        noiseSeed(200); // Set a consistent noise seed for reproducibility
+
+        for (let i = 0; i < num_cols; i++) {
+            for (let j = 0; j < num_rows; j++) {
+                let x = (i + 0.5) * circleWidth + random(-circleWidth / 2, circleWidth / 2); // Randomize x position
+                let y = (j + 0.5) * circleHeight + random(-circleHeight / 2, circleHeight / 2); // Randomize y position
+                
+                // Adjust the expansion rate based on the noise value
+                let noiseValue = noise(x * noiseScale, y * noiseScale);
+                // Apply an exponential function to amplify the differences
+                noiseValue = pow(noiseValue, 3); // You can adjust the exponent for desired effect
+                let expansionRate = map(noiseValue, 0, 1, minExpansionRate, maxExpansionRate);
+
+                circles_2.push(new Circle(x, y, expansionRate));
+            }
+        }
+
+        setupComplete = true; // Set flag to true after setup code is executed
+    } //preload
+
+    fill(0);
+    rect(0, 0, width, height);
+   
+     // Expand and draw circles
+    noStroke();
+    fill(255);
+    for (let i = 0; i < circles_2.length; i++) {
+        circles_2[i].expand();
+        circles_2[i].draw();
+    }
+
+    if(cur_frac>0.95){
+        circles_2 = [];
+        setupComplete = false;
+    }
+
+     // Remove circles that are fully expanded
+     for (let i = circles_2.length - 1; i >= 0; i--) {
+        if (circles_2[i].isFullyExpanded()) {
+            circles_2.splice(i, 1);
         }
     }
 
-    // Draw all exploding stars
-    for (let i = 0; i < stars.length; i++) {
-        stars[i].draw(cur_frac);
-    }
+    let minPopSize = 0;
 
-   //Reseting the array of the Stars
-    if(cur_frac == 0){
-        stars = [];
-        circles = [];
-        added = true;
-    }
+     // Check if all circles are not yet removed
+     if (circles_2.length > 0) {
+        // Calculate the fraction of circles to remove based on current fraction
+        let fractionToRemove = map(cur_frac, 0, 0.95, 0, 0.3);
 
+        // Calculate the number of circles to remove in this frame
+        let circlesToRemove = Math.ceil(fractionToRemove * circles_2.length);
 
-    
-
-    // Check if a new circle needs to be added
-    if (cur_frac >= 0.5 && added ) {
-        addCircle(); // Add a new circle if conditions are met
-        added = false;
-    }
-
-    // Update and draw all circles
-    for (let i = 0; i < circles.length; i++) {
-        let circle = circles[i];
-        circle.update(cur_frac); // Update circle properties
-        circle.display(); // Draw the circle
+        // Remove circles gradually
+        for (let i = 0; i < circlesToRemove; i++) {
+            // Randomly select a circle index to remove
+            let randomIndex = Math.floor(Math.random() * circles_2.length);
+            // Check if the circle's diameter exceeds a certain threshold before removing it
+            if (circles_2[randomIndex].diameter >= minPopSize) {
+                // Remove the circle at the random index
+                circles_2.splice(randomIndex, 1);
+            }
+        }
     }
 }
 
 
 
+// Define a Circle class
+class Circle {
+    constructor(x, y, expansionRate) {
+        this.x = x;
+        this.y = y;
+        this.expansionRate = expansionRate;
+        this.diameter = 0;
+    }
 
+    // Function to expand the circle
+    expand() {
+        this.diameter += this.expansionRate * 1.2;
+    }
 
+    // Function to check if the circle is fully expanded
+    isFullyExpanded() {
+        return this.diameter >=  width/2  ;//max(width, height);
+    }
 
+    // Function to draw the circle
+    draw() {
+        // Define the number of color segments for the rainbow effect
+        let numSegments = 72; // Adjust the number of segments as needed
 
+        // Calculate the angle increment for each segment
+        let angleIncrement = TWO_PI / numSegments;
+
+        // Draw the main white circle
+        fill(255);
+        ellipse(this.x, this.y, this.diameter);
+
+        // Loop through each segment and draw the corresponding part of the rim
+        for (let i = 0; i < numSegments; i++) {
+            // Calculate the start and end angles of the current segment
+            let startAngle = i * angleIncrement;
+            let endAngle = (i + 1) * angleIncrement;
+
+            // Calculate the corresponding color for the current segment
+            let hue = map(i, 0, numSegments, 0, 360); // Map the segment index to a hue value (0-360)
+            let segmentColor = color('hsb(' + hue + ', 100%, 100%)'); // Create a color using HSB color mode
+
+            // Set the fill color for the current segment
+            fill(segmentColor);
+
+            // Calculate the radius for the current segment
+            let outerRadius = this.diameter / 2;
+            let innerRadius = outerRadius - 10; // Adjust the width of the rainbow rim as needed
+
+            // Draw the segment of the rainbow rim
+            beginShape();
+            vertex(this.x + cos(startAngle) * innerRadius, this.y + sin(startAngle) * innerRadius);
+            vertex(this.x + cos(startAngle) * outerRadius, this.y + sin(startAngle) * outerRadius);
+            vertex(this.x + cos(endAngle) * outerRadius, this.y + sin(endAngle) * outerRadius);
+            vertex(this.x + cos(endAngle) * innerRadius, this.y + sin(endAngle) * innerRadius);
+            endShape(CLOSE);
+        }
+    }
+}
