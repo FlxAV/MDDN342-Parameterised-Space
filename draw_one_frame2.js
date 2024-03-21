@@ -10,9 +10,10 @@ function draw_one_frame(cur_frac) {
         let circleWidth = width / num_cols;
         let circleHeight = height / num_rows;
 
-        let maxExpansionRate = 80; // Maximum expansion rate
-        let minExpansionRate = 1; // Minimum expansion rate
+        let maxExpansionRate = map(height, 540, 1200, 80, 240); // Maximum expansion rate
+        let minExpansionRate = map(height, 540, 1200, 1, 3);; // Minimum expansion rate
 
+          
        
 
         noiseSeed(200); // Set a consistent noise seed for reproducibility
@@ -36,27 +37,16 @@ function draw_one_frame(cur_frac) {
         setupComplete = true; // Set flag to true after setup code is executed
     } //preload
 
-    if(switch_02){
-        fill(255);
-    }else{
-        fill(0);
-    }
-
     fill(0);
     rect(0, 0, width, height);
 
+    // Calculate the scale factor based on the original canvas size (800x600)
+    let myScale = map(height, 540, 1200, 1,3);
+    push();
+   // scale(myScale);
    
-
-    //console.log("array LENGTH: ",circles.length);
-
      // Expand and draw circles
     noStroke();
-
-    if(switch_02){
-        fill(0);
-    }else{
-        fill(255);
-    }
     fill(255);
     for (let i = 0; i < circles_2.length; i++) {
         circles_2[i].expand();
@@ -98,6 +88,11 @@ function draw_one_frame(cur_frac) {
             }
         }
     }
+
+     // Reset the scale to default
+   // resetMatrix();
+   pop();
+    
 
 }
 
