@@ -33,3 +33,8 @@ Then I created a "Star" class where it creates a bunch of lines from a specific 
 The animation was a bunch of spots on the canvas were randomly slected with a check to make sure two spots weren't too close to each other. Then the "explosion" animation would begin from each point (around 6 points). Each point was a random color, once the explosions had reach the borders of the canvas, a cricle would be drawn from the center of the canvas, expanding and erasing everything, completing the loop.  I found that all of that happening in one second was just too much and chaotic so I wasn't too thrilled.
 
 After that I moved onto creating a new draw_one_frame file so that I could keep the "Stars" one and work on something else. I know generate a grid of circles across the canvas. I then assign noise values to each point and thecircles expand using such Noise function until it covers teh whole screen. The circles then diminish and then repeat. The loop completes when the screen is completely covered.
+
+
+****** PART 4 *************************
+
+So i removed the switching of colors that happen. Now I have a black bakcground and the circles are white. The circles still expand each at a randomised rate. I added a rainbow ring around each circle (chromatic abberation) so that each circle kind of looks lika a bubble. I then made it so that the circles get removed based off of hwo far along in the animation we are to make it look like they are popping. I then modified the circle generation so that have a random location instead of a grid.
