@@ -54,7 +54,12 @@ To view the project, follow these steps:
 2. **Run the Project:**
   - Navigate to the index.html file.
   - Right-click on the index.html file and select "Open with Live Server" (if you have the Live Server extension installed) or open it directly in your browser.
-  - The project should open in a new browser tab, displaying the interactive animation. 
+  - The project should open in a new browser tab, displaying the interactive animation.
+
+3. **Interact:**
+   - Once the project is running, the animation will play.
+   - Some keybinds are setup for debuggin and recording the animation.
+   - Changing the size of the animation is possible by clicking on "large" and "xlarge".
 
 ### References
 
