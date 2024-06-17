@@ -1,4 +1,4 @@
-2024 MDDN342 Project 1: Parameterised Space
+## 2024 MDDN342 Project 1: Parameterised Space
 Bubbling Up
 Author: Felix Vidal
 
