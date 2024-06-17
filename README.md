@@ -3,12 +3,6 @@ Bubbling Up
 
 Author: Felix Vidal
 
-Open in Visual Studio Code:[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14049575&assignment_repo_type=AssignmentRepo)
-
-
-
-
-
 ### Project Overview
 
 "Bubbling Up" is an interactive animation project inspired by classic screensavers and games. Originally conceived as a snake-like animation, it evolved into a dynamic visual experience featuring bubbles that appear, expand, and pop on the screen. This README provides a detailed account of the design journey, influences, and technical instructions for running the project.
