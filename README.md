@@ -1,50 +1,63 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/DlFCTo_q)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=14049575&assignment_repo_type=AssignmentRepo)
-### 2024 MDDN342 Project 1: Parameterised Space
-
-
+2024 MDDN342 Project 1: Parameterised Space
 Bubbling Up
-Felix Vidal
+Author: Felix Vidal
+
+Project Overview
+"Bubbling Up" is an interactive animation project inspired by classic screensavers and games. Originally conceived as a snake-like animation, it evolved into a dynamic visual experience featuring bubbles that appear, expand, and pop on the screen. This README provides a detailed account of the design journey, influences, and technical instructions for running the project.
 
 Design Intentions
-Initially inspired by the classic game Snake, the project aimed to create an interactive scene where the screen gradually fills with lines (resembling snakes) moving around the space. However, the design intentions evolved over time, leading to the concept of bubbles appearing on the screen and gradually popping.
+Initially inspired by the classic game Snake, the project's goal was to create an interactive scene where the screen fills with lines resembling snakes. However, the design evolved, leading to the concept of bubbles that gradually pop on the screen.
 
 External Influences and Inspirations
-3D Pipes Screensaver: The visual style of the project drew inspiration from the classic 3D pipes screensaver, particularly in terms of the dynamic movement and depth perception.
+3D Pipes Screensaver: The dynamic movement and depth perception of the classic 3D pipes screensaver heavily influenced the visual style.
 
 ![Reference!](MDDN342_pipes02.jpg)
 
- However when that plan fell through I looked into other design ideas. One that I enjoyed was was the expanding black circles which I will mention in my journal. Some inspiration came from this scene in "The Incredibles".
+The Incredibles' Black Orbs Scene: The expanding black circles from "The Incredibles" inspired the bubble concept.
 
 ![Reference!]( MDDN342_incrediblesBlackOrbs.jpg)
 
-Those black orbs then inspired me into a slightly different direction. The idea was bubbles.
+Bubbles Imagery: The final design was inspired by the appearance and behavior of bubbles.
 
 ![Reference!]( MDDN342_bubbles.jpg)
 
-
-Include reference images here
-
 Design Journal
+
 Part 1: Exploration and Inspiration
-At the begining of project the concept was of a snake-like animation gradually filling the screen. Drawing inspiration from classic games and screensavers, particularly the 3D pipes screensaver, I aimed to create a visually engaging experience with dynamic movement and depth perception.
+Concept: A snake-like animation filling the screen.
+Inspiration: Classic games and screensavers, particularly the 3D pipes screensaver.
 
 Part 2: Iteration and Realization
-Initial attempts involved creating a grid on the canvas and generating a line that traversed the screen, simulating a snake-like motion. However, limitations in the timeframe led to a reassessment of the approach. Recognizing the constraints, I pivoted towards exploring alternative concepts while still maintaining the essence of dynamic animation.
+Initial Attempts: Creating a grid on the canvas with a traversing line simulating snake motion.
+Reassessment: Constraints led to exploring alternative concepts while maintaining dynamic animation.
 
 Part 3: Experimentation and Refinement
-Exploring new avenues, I experimented with different visual elements, including circles expanding from a central point resembling an explosion. While visually interesting, the complexity of the animation led to a chaotic experience. Iterating further, I developed a grid of circles across the canvas, utilizing noise functions to control their expansion and contraction. This iterative process allowed for refinement and optimization of the visual effects.
+New Avenues: Experimented with expanding circles resembling explosions.
+Challenges: Complexity led to a chaotic visual experience.
+Refinement: Developed a grid of circles, using noise functions for controlled expansion and contraction.
 
 Part 4: Evolution and Finalization
-Refining the design, I simplified the color scheme to black background with white circles, reminiscent of bubbles. Implementing a rainbow ring around each circle added a touch of chromatic aberration, enhancing the bubble-like appearance. Further modifications were made to simulate the popping of bubbles based on the progression of the animation. The addition of randomization in circle placement added variation and visual interest to the scene, resultoinig in the design concept.
+Simplified Design: Black background with white circles, adding a rainbow ring for chromatic aberration.
+Final Modifications: Simulated bubble popping based on animation progression, added randomization for visual interest.
 
-Overall, the design process was marked by experimentation, iteration, and adaptation, ultimately resulting in the creation of a dynamic and visually captivating animation reminiscent of bubbles emerging and popping.
+Running the Project
 
+To view the project, follow these steps:
 
+Open in Visual Studio Code:
 
+Clone the repository to your local machine.
+Open the project folder in Visual Studio Code.
+Run the Project:
 
-References:
+Navigate to the index.html file.
+Right-click on the index.html file and select "Open with Live Server" (if you have the Live Server extension installed) or open it directly in your browser.
+The project should open in a new browser tab, displaying the interactive animation.
 
-Pipes: https://www.screensaversplanet.com/screensavers/3d-pipes-494/#google_vignette
-Incredibles: Bird, B. (2004). The Incredibles. Buena Vista Pictures.
-Bubbles: [Katia_d](https://www.freepik.com/author/katiad)
+References
+3D Pipes Screensaver: Screensavers Planet
+The Incredibles: Bird, B. (2004). The Incredibles. Buena Vista Pictures.
+Bubbles Image: Katia_d
+Additional Information
+Assignment Details: Review Assignment Due Date
+Open in Visual Studio Code: Open in VSCode
