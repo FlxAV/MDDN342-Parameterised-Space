@@ -47,16 +47,14 @@ Final Modifications: Simulated bubble popping based on animation progression, ad
 
 To view the project, follow these steps:
 
-- Open in Visual Studio Code:
-
+1. **Setup:**
   - Clone the repository to your local machine.
   - Open the project folder in Visual Studio Code.
 
-- Run the Project:
-
+2. **Run the Project:**
   - Navigate to the index.html file.
   - Right-click on the index.html file and select "Open with Live Server" (if you have the Live Server extension installed) or open it directly in your browser.
-  - The project should open in a new browser tab, displaying the interactive animation.
+  - The project should open in a new browser tab, displaying the interactive animation. 
 
 ### References
 
@@ -66,5 +64,9 @@ To view the project, follow these steps:
 The Incredibles: Bird, B. (2004). The Incredibles. Buena Vista Pictures.
 
 Bubbles Image: [Katia_d](https://www.freepik.com/author/katiad)
+
+## Additional Notes
+
+- **Development Environment:** Visual Studio Code with Live Server recommended for real-time updates.
 
 
