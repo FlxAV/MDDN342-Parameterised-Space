@@ -60,9 +60,11 @@ To view the project, follow these steps:
 
 ### References
 
-3D Pipes Screensaver: Screensavers Planet
+3D Pipes Screensaver: [Screensavers Planet](https://www.screensaversplanet.com/screensavers/3d-pipes-494/#google_vignette
+)
 The Incredibles: Bird, B. (2004). The Incredibles. Buena Vista Pictures.
-Bubbles Image: Katia_d
-Additional Information
+Bubbles Image: [Katia_d](https://www.freepik.com/author/katiad)
+
+### Additional Information
 Assignment Details: Review Assignment Due Date
 Open in Visual Studio Code: Open in VSCode
